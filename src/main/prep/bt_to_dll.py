@@ -4,7 +4,7 @@ root = Node(1)
 root.left = Node(2)
 root.right = Node(3)
 root.left.right = Node(4)
-# root.right.left = Node(5)
+root.right.left = Node(5)
 # root.right.right= Node(6)
 #
 
@@ -17,11 +17,18 @@ def inorder(root, lst):
     lst.append(" -> ")
     inorder(root.right, lst)
 
+def print_arr(head):
+    if not head:
+        return
+    lst = []
+    while head:
+        lst.append((head.prev, head, head.next))
+        head = head.next
+    print(lst)
 
 def to_dll(root, head):
 
-    print(root, head)
-
+    print_arr(head)
     if not root:
         return None
 
@@ -39,9 +46,8 @@ def to_dll(root, head):
 
     return head
 
-def to_dll2(root, head):
 
-    print(root, head)
+def to_dll2(root, head):
 
     if not root:
         return None
@@ -62,5 +68,4 @@ lst = []
 inorder(root, lst)
 print(lst)
 head = to_dll(root, None)
-print(head, head.next, head.next.next)#, head.next.next.next, head.next.next.next.next, head.next.next.next.next.next)
-#print(head.prev, head.next.prev, head.next.next.prev)
+print_arr(head)

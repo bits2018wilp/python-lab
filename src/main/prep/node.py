@@ -27,3 +27,9 @@ class Node:
 
     def set_heap_ref(self, heapref):
         self.heapref = heapref
+
+    def __lt__(self, other):
+        return self.value < other.value
+
+    def __gt__(self, other):
+        return self.value > other.value

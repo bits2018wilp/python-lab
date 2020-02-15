@@ -2,6 +2,7 @@
 def min_abs_diff(arr, set1, set2, n):
 
         for i in range(len(arr)):
+
             tarr = arr.copy()
 
             tset1 =  None
@@ -23,12 +24,12 @@ def min_abs_diff(arr, set1, set2, n):
                 if s in tarr:
                     tarr.remove(s)
 
-            tset2 = tarr.copy()
             if len(tarr) == 0:
                 continue
 
-            print(tset1, tset2, abs(sum(tset2) - sum(tset1)))
+            print(tset1, tarr, abs(sum(tarr) - sum(tset1)))
             min_abs_diff(tarr, tset1, tset2, n)
+
 
 arr = [1, 6, 5, 11, 7]
 min_abs_diff(arr, None, None, len(arr))
