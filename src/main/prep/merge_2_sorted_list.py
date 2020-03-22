@@ -13,34 +13,65 @@ head1.next = Node(8)
 head1.next.next = Node(10)
 
 head2 = Node(4)
-head2.next = Node(11)
+head2.next = Node(9)
 head2.next.next = Node(15)
 
 print_ll(head1)
 print_ll(head2)
-tmp1 = head1
-tmp2 = head2
-h2 = None
 
-while tmp1 and tmp2:
+def using_dummy_node(head1, head2):
 
-    if tmp1 < tmp2:
-        if not h2:
-            h2 = tmp1
-        t = tmp1.next
-        tmp1.next = tmp2
-        tmp1 = t
-        #tmp2 = tmp2.next
+    dummy = Node(None)
+    tail = dummy
+
+    while head1 and head2:
+        print(head1, head2, tail, dummy)
+
+        if head1.value <= head2.value:
+            tail.next = head1
+            tail = tail.next
+            head1 = head1.next
+        else:
+            tail.next = head2
+            tail = tail.next
+            head2 = head2.next
+
+    while head1:
+        tail.next = head1
+        tail = tail.next
+        head1 = head1.next
+
+    while head2:
+        tail.next = head2
+        tail = tail.next
+        head2 = head2.next
+
+    dummy = dummy.next
+    return dummy
+
+
+def merge(head1, head2):
+
+    temp = None
+
+    if head1 is None:
+        return head2
+
+    if head2 is None:
+        return head1
+
+    if head1.value <= head2.value:
+        temp = head1
+        temp.next = merge(head1.next, head2)
     else:
-        if not h2:
-            h2 = tmp2
-        t = tmp2.next
-        tmp2.next = tmp1
-        #tmp1 = tmp1.next
-        tmp2 = t
+        temp = head2
+        temp.next = merge(head1, head2.next)
 
-    print(tmp1, tmp2)
-    print_ll(h2)
+    return temp
 
-print(tmp1, tmp2)
-print_ll(h2)
+# tmp = merge(head1, head2)
+# print_ll(tmp)
+
+dummy = using_dummy_node(head1, head2)
+print(dummy)
+print_ll(dummy)

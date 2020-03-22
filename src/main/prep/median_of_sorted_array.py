@@ -38,7 +38,7 @@ def median_count(arr1, arr2):
     print('mc: ', mc)
     c = 0
     laste = 0
-    curre = 9909
+    curre = 0
 
     while c < mc+1:
 

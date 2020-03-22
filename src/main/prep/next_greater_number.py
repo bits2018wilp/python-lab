@@ -2,6 +2,8 @@
 arr = [1, 3, 2]
 # arr = [1, 2, 3]
 arr = [3, 1, 2]
+arr = [3, 1, 2, 8, 7]
+
 #arr = [2, 1, 3]
 #arr = [2, 3, 1]
 #arr = [3, 2, 1]
@@ -46,12 +48,14 @@ def find_next_big(arr):
 def findNext(number, n):
     # Start from the right most digit and find the first
     # digit that is smaller than the digit next to it
+
     for i in range(n - 1, 0, -1):
-        if number[i] > number[i - 1]:
+        if number[i-1] < number[i]:
             break
 
     # If no such digit found,then all numbers are in
     # descending order, no greater number is possible
+
     if i == 0:
         print("Next number not possible")
         return
@@ -61,16 +65,16 @@ def findNext(number, n):
     x = number[i - 1]
     smallest = i
     print(x, i)
+
     for j in range(i + 1, n):
         if number[j] > x and number[j] < number[smallest]:
             smallest = j
 
-            # Swapping the above found smallest digit with (i-1)'th
     number[smallest], number[i - 1] = number[i - 1], number[smallest]
-    number = number[0:i] + sorted(number[i:])
+    number = number[:i] + sorted(number[i:])
     return number
 
 print(arr)
-arr = find_next_big(arr)
-#arr = findNext(arr, 3)
-print(arr)
+#arr1 = find_next_big(arr)
+arr2 = findNext(arr, len(arr))
+print( arr2)

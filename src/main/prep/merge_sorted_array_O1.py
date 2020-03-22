@@ -1,6 +1,4 @@
 
-import math
-
 def merge(arr1, arr2):
 
     print(arr1)
@@ -14,10 +12,11 @@ def merge(arr1, arr2):
         last = arr1[i]
         i -= 1
 
-        while i>=0 and j >=0 and arr1[i] > arr2[j]:
+        while i >= 0 and j >= 0 and arr1[i] > arr2[j]:
             arr1[i+1] = arr1[i]
             i-=1
 
+        print(last, i, j)
         arr1[i+1] = arr2[j]
         arr2[j] = last
         j-=1
